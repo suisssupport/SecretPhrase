@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #1f2a36, #3a4a5a);
+      color: #e6e6e6;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background-color: #0f1720;
+      border-radius: 12px;
+      padding: 30px 40px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 11px auto;
+      max-width: 47px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #9bb7d4;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      color: #b0c4de;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      background-color: #2b3a4a;
+      color: #ffffff;
+      font-size: 14px;
+    }
+
+    input[readonly] {
+      background-color: #1c2733;
+      color: #cfd8e3;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #3b82f6;
+      border: none;
+      border-radius: 6px;
+      color: #ffffff;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    .error {
+      margin-top: 10px;
+      color: #ff6b6b;
+      text-align: center;
+      display: none;
+    }
+
+    /* Secret page */
+    .secret {
+      display: none;
+      text-align: center;
+    }
+
+    .secret h2 {
+      color: #9bb7d4;
+      margin-bottom: 15px;
+    }
+
+    .secret p {
+      color: #d1d5db;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Login Page -->
+    <div id="login">
+      <img src="logo.png" alt="Logo" class="logo" />
+      <h1>Login</h1>
+
+      <label for="username">Username</label>
+      <input type="text" id="username" value="Tracey Saran" readonly />
+
+      <label for="password">Password (case number assigned by agent)</label>
+      <input type="password" id="password" placeholder="Enter password" />
+
+      <button onclick="checkPassword()">Enter</button>
+      <div id="error" class="error">Incorrect password</div>
+    </div>
+
+    <!-- Secret Page -->
+    <div id="secret" class="secret">
+      <img src="logo.png" alt="Logo" class="logo" />
+      <h2>Here is your secret message</h2>
+      <p>
+        This is your protected content. Only users with the correct password
+        are able to see this message.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const CORRECT_PASSWORD = "FR780027W";
+
+    function checkPassword() {
+      const passwordInput = document.getElementById("password").value;
+      const error = document.getElementById("error");
+
+      if (passwordInput === CORRECT_PASSWORD) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("secret").style.display = "block";
+      } else {
+        error.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
